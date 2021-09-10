@@ -8,7 +8,12 @@ colorlog = "*"
 flask = "*"
 flask-cors = "*"
 flask-restful = "*"
+flask-SQLAlchemy = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+mysql-connector-python = "*"
 python-dotenv = "*"
+SQLAlchemy = "*"
 
 [dev-packages]
 
