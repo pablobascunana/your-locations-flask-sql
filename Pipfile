@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 colorlog = "*"
+flasgger = "*"
 flask = "*"
 flask-cors = "*"
 flask-restful = "*"

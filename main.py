@@ -8,9 +8,11 @@ load_dotenv()
 from config import logger
 from config.marshmallow import marshmallow as ma
 from config.sql_alchemy import db
+from config.swagger import SWAGGER_CONFIG
 from flask import Flask
 from flask_cors import CORS
 from flask_restful import Api
+from flasgger import Swagger
 from resources.routes.routes import create_resources
 
 app = Flask(__name__)
@@ -21,8 +23,12 @@ logging.info('The app is in debug mode: {}'.format(os.getenv('DEBUG')))
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
+app.config['SWAGGER'] = SWAGGER_CONFIG
+
+swagger = Swagger(app)
 
 api = Api(app)
+
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:8080"}})
 
 create_resources(api)
