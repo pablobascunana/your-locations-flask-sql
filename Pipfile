@@ -19,6 +19,7 @@ python-dotenv = "*"
 SQLAlchemy = "*"
 
 [dev-packages]
+mock-alchemy = "*"
 pytest = "*"
 
 [requires]
