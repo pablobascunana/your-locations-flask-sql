@@ -18,3 +18,7 @@ class User(db.Model):
     def insert(cls, user: "User"):
         db.session.add(user)
         db.session.commit()
+
+    @classmethod
+    def get_user_by_username(cls, user: "User") -> "User":
+        return cls.query.filter_by(userName=user.userName).one()

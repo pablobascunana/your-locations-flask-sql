@@ -3,6 +3,7 @@ from flask import request
 from flask_restful import Resource
 from schemas.user import UserSchema
 from models.user import User as UserModel
+from usecases.user import do_user_login
 from utils.commons import generate_hash_password, generate_uuid_4
 from utils.constants import SWAGGER_PATH
 from utils.responses import created
@@ -20,3 +21,12 @@ class User(Resource):
         user.uuid = generate_uuid_4()
         UserModel.insert(user)
         return created(user_schema.dump(user))
+
+
+class Login(Resource):
+    @classmethod
+    @swag_from(SWAGGER_STATUS_PATH + 'login.yml')
+    def post(cls):
+        user = user_schema.load(request.get_json(), partial=True)
+        db_user = UserModel.get_user_by_username(user)
+        return do_user_login(user, db_user)
