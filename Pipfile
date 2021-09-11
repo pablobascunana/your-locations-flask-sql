@@ -4,9 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+bcrypt = "*"
 colorlog = "*"
 flasgger = "*"
 flask = "*"
+flask-api = "*"
 flask-cors = "*"
 flask-restful = "*"
 flask-SQLAlchemy = "*"

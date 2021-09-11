@@ -14,6 +14,7 @@ from flask_cors import CORS
 from flask_restful import Api
 from flasgger import Swagger
 from resources.routes.routes import create_resources
+from utils.errors import create_error_handlers
 
 app = Flask(__name__)
 
@@ -31,6 +32,7 @@ api = Api(app)
 
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:8080"}})
 
+create_error_handlers(app)
 create_resources(api)
 
 logging.info('The version number is: {}'.format(os.getenv('VERSION_NUMBER')))
