@@ -10,7 +10,7 @@ from datetime import timedelta
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from mock_alchemy.mocking import UnifiedAlchemyMagicMock
-from models.user import User as UserModel
+from models.user import UserModel
 from schemas.user import UserSchema
 from usecases.user import do_user_login
 from utils.commons import generate_hash_password, generate_uuid_4
@@ -77,7 +77,7 @@ def test_insert_user(register_user):
     assert user[0].email == register_user.email
     assert type(user[0].password) == str
     dumped_user = user_schema.dump(register_user)
-    assert len(dumped_user) == 1
+    assert len(dumped_user) == 2
     assert dumped_user['userName'] == register_user.userName
 
 
