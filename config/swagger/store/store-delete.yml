@@ -1,0 +1,23 @@
+Delete store
+---
+tags:
+  - Store
+parameters:
+  - name: body
+    in: body
+    required: true
+    description: The store to be deleted
+    properties:
+      uuid:
+        type: string
+        description: Store unique identifier
+        default: '1aa5c34b-b593-454c-9f0b-ff406441527e'
+
+
+responses:
+  204:
+    description: Store deleted successfully or does not exist
+  401:
+    description: No permissions to execute
+  500:
+    description: Internal server error

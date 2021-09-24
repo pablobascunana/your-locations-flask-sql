@@ -1,0 +1,32 @@
+Get stores
+---
+tags:
+  - Store
+
+definitions:
+  Store:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        uuid:
+          type: string
+        email:
+          type: string
+        cif:
+          type: string
+        phone:
+          type: string
+
+
+responses:
+  200:
+    description: User stores
+    schema:
+      $ref: '#/definitions/Store'
+  401:
+    description: No permissions to execute
+  500:
+    description: Internal server error

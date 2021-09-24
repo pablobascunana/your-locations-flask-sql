@@ -10,6 +10,10 @@ def created(json_data: dict) -> tuple:
     return json_data, status.HTTP_201_CREATED
 
 
+def no_content() -> tuple:
+    return "", status.HTTP_204_NO_CONTENT
+
+
 def bad_request(message: dict) -> tuple:
     return jsonify(message), status.HTTP_400_BAD_REQUEST
 

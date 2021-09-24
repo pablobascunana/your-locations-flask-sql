@@ -1,5 +1,5 @@
 from flask_jwt_extended import create_access_token, create_refresh_token
-from models.user import User as UserModel
+from models.user import UserModel
 from utils.commons import check_hash_password
 from utils.responses import ok, unauthorized
 

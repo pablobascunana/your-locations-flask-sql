@@ -7,7 +7,7 @@ load_dotenv()
 
 from config import logger
 from config.marshmallow import marshmallow as ma
-from config.sql_alchemy import db
+from config.sql_alchemy import db, create_db_tables
 from config.swagger import SWAGGER_CONFIG
 from datetime import timedelta
 from flask import Flask
@@ -44,6 +44,7 @@ api = Api(app)
 jwt = JWTManager(app)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:8080"}})
 
+create_db_tables(app)
 create_error_handlers(app)
 create_resources(api)
 create_token_callbacks(jwt)

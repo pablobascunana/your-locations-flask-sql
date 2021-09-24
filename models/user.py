@@ -2,10 +2,10 @@ from config.sql_alchemy import db
 from datetime import datetime
 
 
-class User(db.Model):
-    __tablename__ = "user"
+class UserModel(db.Model):
+    __tablename__ = "users"
 
-    uuid = db.Column(db.String(128), primary_key=True, unique=True, nullable=False)
+    uuid = db.Column(db.String(128), primary_key=True)
     userName = db.Column(db.String(45), unique=True, nullable=False)
     name = db.Column(db.String(45), nullable=False)
     lastName = db.Column(db.String(45), nullable=False)
@@ -15,10 +15,10 @@ class User(db.Model):
     registerDate = db.Column(db.DateTime(), nullable=False, default=datetime.utcnow)
 
     @classmethod
-    def insert(cls, user: "User"):
+    def insert(cls, user: "UserModel"):
         db.session.add(user)
         db.session.commit()
 
     @classmethod
-    def get_user_by_username(cls, user: "User") -> "User":
+    def get_user_by_username(cls, user: "UserModel") -> "UserModel":
         return cls.query.filter_by(userName=user.userName).one()

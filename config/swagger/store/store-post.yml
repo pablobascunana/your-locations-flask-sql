@@ -1,0 +1,57 @@
+Add store
+---
+tags:
+  - Store
+parameters:
+  - name: body
+    in: body
+    required: true
+    description: The store to be registered
+    properties:
+      name:
+        type: string
+        description: Store name
+        default: 'my store'
+      userUuid:
+        type: string
+        description: User unique identifier
+        default: 'e848005b-3bb1-4b2d-ba8c-e94f371c8535'
+      email:
+        type: string
+        description: Store email
+        default: 'email@email.com'
+      cif:
+        type: string
+        description: Store CIF code
+        default: 'G86202198'
+      phone:
+        type: string
+        description: Store phone
+        default: '+34666777888'
+
+definitions:
+  Store:
+    type: object
+    properties:
+      name:
+        type: string
+      uuid:
+        type: string
+      email:
+        type: string
+      cif:
+        type: string
+      phone:
+        type: string
+
+responses:
+  201:
+    description: Store created successfully
+    schema:
+      $ref: '#/definitions/Store'
+  400:
+    description: Incorrect request body or store already exist
+  401:
+    description: No permissions to execute
+  500:
+    description: Internal server error
