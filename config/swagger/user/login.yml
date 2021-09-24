@@ -22,8 +22,10 @@ definitions:
     type: object
     properties:
       access_token:
+        description: Session token
         type: string
       refresh_token:
+        description: Refresh session token
         type: string
 
 

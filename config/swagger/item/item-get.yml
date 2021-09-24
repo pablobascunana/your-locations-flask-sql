@@ -1,0 +1,36 @@
+Get items
+---
+tags:
+  - Item
+
+definitions:
+  Item:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          description: Item name
+          type: string
+        uuid:
+          description: Item unique identifier
+          type: string
+        price:
+          description: Item price
+          type: number
+        imageURL:
+          description: Item image online URL
+          type: string
+        description:
+          description: Item description
+          type: string
+
+responses:
+  200:
+    description: Store items
+    schema:
+      $ref: '#/definitions/Item'
+  401:
+    description: No permissions to execute
+  500:
+    description: Internal server error

@@ -1,0 +1,40 @@
+Edit item
+---
+tags:
+  - Item
+parameters:
+  - name: body
+    in: body
+    required: true
+    description: The item to be edited
+    properties:
+      name:
+        type: string
+        description: Item name
+        default: 'my item'
+      price:
+        type: number
+        description: Item price
+        default: 12.5
+      imageURL:
+        type: string
+        description: Item image
+        default: 'https://image.com/1234'
+      description:
+        type: string
+        description: Item description
+        default: 'The item description'
+      uuid:
+        type: string
+        description: Item unique identifier
+        default: 'e76fa12e-5840-4fd0-ab30-04f5c1698ba3'
+
+responses:
+  204:
+    description: Item updated successfully
+  400:
+    description: Incorrect request body or item already exist and cannot be edited
+  401:
+    description: No permissions to execute
+  500:
+    description: Internal server error

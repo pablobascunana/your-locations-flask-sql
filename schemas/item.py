@@ -7,5 +7,4 @@ class ItemSchema(ma.SQLAlchemyAutoSchema):
         model = ItemModel
         load_instance = True
         include_fk = True
-        load_only = ("store",)
-        dump_only = ("id",)
+        load_only = ("storeUuid",)

@@ -34,14 +34,19 @@ definitions:
     type: object
     properties:
       name:
+        description: Store name
         type: string
       uuid:
+        description: Store unique identifier
         type: string
       email:
+        description: Store email
         type: string
       cif:
+        description: Store CIF code
         type: string
       phone:
+        description: Store phone
         type: string
 
 responses:

@@ -1,0 +1,53 @@
+Add item
+---
+tags:
+  - Item
+parameters:
+  - name: body
+    in: body
+    required: true
+    description: The item to be added to a store
+    properties:
+      name:
+        type: string
+        description: Item name
+        default: 'my item'
+      price:
+        type: number
+        description: Item price
+        default: 12.5
+      imageURL:
+        type: string
+        description: Item image
+        default: 'https://image.com/1234'
+      description:
+        type: string
+        description: Item description
+        default: 'The item description'
+
+definitions:
+  Item:
+    type: object
+    properties:
+      name:
+        type: string
+      uuid:
+        type: string
+      price:
+        type: number
+      imageURL:
+        type: string
+      description:
+        type: string
+
+responses:
+  201:
+    description: Item added to store successfully
+    schema:
+      $ref: '#/definitions/Item'
+  400:
+    description: Incorrect request body or item already exist
+  401:
+    description: No permissions to execute
+  500:
+    description: Internal server error
