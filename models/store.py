@@ -6,10 +6,10 @@ class StoreModel(db.Model):
     __tablename__ = "stores"
 
     uuid = db.Column(db.String(128), primary_key=True)
-    name = db.Column(db.String(80), nullable=False, unique=True)
-    email = db.Column(db.String(80), nullable=False, unique=True)
+    name = db.Column(db.String(45), nullable=False, unique=True)
+    email = db.Column(db.String(128), nullable=False, unique=True)
     cif = db.Column(db.String(9), nullable=False, unique=True)
-    phone = db.Column(db.String(20), nullable=False)
+    phone = db.Column(db.String(15), nullable=False)
 
     userUuid = db.Column(db.String(128), db.ForeignKey("users.uuid"), nullable=False)
 

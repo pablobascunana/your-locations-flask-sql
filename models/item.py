@@ -6,7 +6,7 @@ class ItemModel(db.Model):
     __tablename__ = "items"
 
     uuid = db.Column(db.String(128), primary_key=True)
-    name = db.Column(db.String(80), nullable=False, unique=True)
+    name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Float(precision=2), nullable=False)
     imageURL = db.Column(db.String(512))
     description = db.Column(db.Text)
@@ -32,4 +32,10 @@ class ItemModel(db.Model):
     def delete(cls, item_uuid: str):
         deleted = cls.query.filter_by(uuid=item_uuid).delete()
         if deleted == 1:
+            db.session.commit()
+
+    @classmethod
+    def delete_all_items(cls, store_uuid: str):
+        deleted = cls.query.filter_by(storeUuid=store_uuid).delete()
+        if deleted > 0:
             db.session.commit()

@@ -2,13 +2,14 @@ from flasgger import swag_from
 from flask import request
 from flask_restful import Resource
 from schemas.user import UserSchema
+from marshmallow import EXCLUDE
 from models.user import UserModel
 from usecases.user import do_user_login
 from utils.commons import generate_hash_password, generate_uuid_4
 from utils.constants import SWAGGER_PATH
 from utils.responses import created
 
-user_schema = UserSchema()
+user_schema = UserSchema(unknown=EXCLUDE)
 SWAGGER_USER_PATH = SWAGGER_PATH + 'user/'
 
 
