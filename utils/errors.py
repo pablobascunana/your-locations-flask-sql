@@ -1,8 +1,8 @@
 import logging
 
 from marshmallow import ValidationError
-from sqlalchemy.exc import IntegrityError
-from utils.responses import bad_request
+from sqlalchemy.exc import IntegrityError, NoResultFound
+from utils.responses import bad_request, not_found
 
 
 def create_error_handlers(app):
@@ -16,3 +16,8 @@ def create_error_handlers(app):
     def handle_mysql_integrity_error(error):
         logging.error(error.args[0])
         return bad_request(error.args[0])
+
+    @app.errorhandler(NoResultFound)
+    def handle_does_not_exist_error(error):
+        logging.error(error.args[0])
+        return not_found(error.args[0])
