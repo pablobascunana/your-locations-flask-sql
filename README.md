@@ -9,8 +9,14 @@ stores and get, save, edit and delete store items. The content of this project i
 * You need to modify the database connection inside **.env** with your database credentials and the database name.
 The tables will be created automatically before the first request will be executed.
 * The unit test are written with **Pytest**. You can run a test file with the following command
-__pytest filename.py__ or the whole test collection with __pytest \*__. You should run these commands in the
-terminal and inside the test folder.
+```
+pytest filename.py
+```
+or the whole test collection with 
+```
+pytest *
+```
+You should run these commands in the terminal and inside the test folder.
 * When you run the project you can visit `http://localhost:5000/apidocs` to view the swagger documentation.
 
 ## How to use Stores API
