@@ -6,7 +6,7 @@ from schemas.item import ItemSchema
 from models.item import ItemModel
 from utils.commons import generate_uuid_4
 from utils.constants import SWAGGER_PATH
-from utils.responses import created, no_content
+from utils.responses import created, no_content, ok
 
 item_schema = ItemSchema()
 item_list_schema = ItemSchema(many=True)
@@ -19,7 +19,7 @@ class Item(Resource):
     @swag_from(SWAGGER_STORE_PATH + 'item-get.yml')
     def get(cls, store_uuid):
         items = ItemModel.get_items(store_uuid)
-        return created(item_list_schema.dump(items))
+        return ok(item_list_schema.dump(items))
 
     @classmethod
     @jwt_required()
