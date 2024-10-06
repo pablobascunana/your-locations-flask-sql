@@ -22,6 +22,7 @@ SQLAlchemy = "*"
 [dev-packages]
 mock-alchemy = "*"
 pytest = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.8"
